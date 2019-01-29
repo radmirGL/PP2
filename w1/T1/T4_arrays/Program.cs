@@ -10,22 +10,19 @@ namespace T4_arrays
     {
         static void Main(string[] args)
         {
-            // 2d arrays of strings
             string[,] a = new string[100, 100];
 
-            // Convert.ToInt32 - convert string out of console to integer from console string
-            int n = Convert.ToInt32(Console.ReadLine());
+            string temp = Console.ReadLine();
+            int n = int.Parse(temp);
 
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j <= i; j++)
                 {
-                    // a[i,j] will take value - string "[*]"
                     a[i, j] = "[*]";
                 }
             }
 
-            // 2d array simple output
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j <= i; j++)

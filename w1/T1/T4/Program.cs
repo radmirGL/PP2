@@ -10,7 +10,6 @@ namespace T4
     {
         static void Main(string[] args)
         {
-            // ну тут комментить нечего даже
             string temp = Console.ReadLine();
             int numOr = int.Parse(temp);
 
