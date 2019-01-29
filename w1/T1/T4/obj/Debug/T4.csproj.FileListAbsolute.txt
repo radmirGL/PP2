@@ -1,0 +1,7 @@
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\bin\Debug\T4.exe.config
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\bin\Debug\T4.exe
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\bin\Debug\T4.pdb
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\obj\Debug\T4.csprojAssemblyReference.cache
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\obj\Debug\T4.csproj.CoreCompileInputs.cache
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\obj\Debug\T4.exe
+C:\Users\DzSee\Documents\pp2\w1\T1\T4\obj\Debug\T4.pdb
