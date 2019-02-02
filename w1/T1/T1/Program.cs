@@ -33,8 +33,11 @@ namespace T1
             // Convert.ToInt32(Console.ReadLine()) - fast convert string from console to integer
             n = Convert.ToInt32(Console.ReadLine());
             // created arrays 
+            // array int size of n
             int[] ar = new int[n];
+            // array of int size 5050
             int[] ans = new int[5050];
+            // array of strings size 100
             string[] ss = new string[100];
 
             // Console.ReadLine().Split() - read the string from console and split this string by "namespace"
@@ -43,7 +46,7 @@ namespace T1
             for (int i = 0; i < n; i++)
             {
                 // int.Parse - convert method from string to int
-                ar[i] = int.Parse(ss[i]);
+                ar[i] = Convert.ToInt32(ss[i]);
 
                 // call our class Prime
                 if (Prime(ar[i]))
@@ -51,7 +54,7 @@ namespace T1
                     cnt++;
                 }
             }
-            // output 
+            // output count of primes
             Console.WriteLine(cnt);
 
             for (int i = 0; i < ar.Count(); i++)

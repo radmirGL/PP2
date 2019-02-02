@@ -1,0 +1,7 @@
+C:\Users\DzSee\Documents\pp2\w1\T1\test\bin\Debug\test.exe.config
+C:\Users\DzSee\Documents\pp2\w1\T1\test\bin\Debug\test.exe
+C:\Users\DzSee\Documents\pp2\w1\T1\test\bin\Debug\test.pdb
+C:\Users\DzSee\Documents\pp2\w1\T1\test\obj\Debug\test.csprojAssemblyReference.cache
+C:\Users\DzSee\Documents\pp2\w1\T1\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Users\DzSee\Documents\pp2\w1\T1\test\obj\Debug\test.exe
+C:\Users\DzSee\Documents\pp2\w1\T1\test\obj\Debug\test.pdb

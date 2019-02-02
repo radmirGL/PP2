@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    // created class
     class Student
     {
-        // created public strings and int
         public string name;
         public string id;
         public int year;
@@ -20,36 +18,26 @@ namespace Task2
             id = ss;
             year = x;
         }
-
-        // created class which will print info
         public void Print()
         {
             Console.WriteLine(name + " " + id + " " + year);
         }
     }
-
-
     class Program
     {
-
         static void Main(string[] args)
         {
-            int y = 1;
+            string s = Console.ReadLine();
+            string ss = Console.ReadLine();
+            int y = int.Parse(Console.ReadLine());
+
+            Student a = new Student(s, ss, y);
 
             for (int i = 0; i < 4; i++)
             {
-                // call class Student, give parametrs to class
-                Student a = new Student("Tolik", "12345", y);
-                Student b = new Student("Zheka", "12345", y);
-
                 a.Print();
-                b.Print();
-
-                // inc year
                 ++y;
-            }
-
-            
+            }           
         }
     }
 }

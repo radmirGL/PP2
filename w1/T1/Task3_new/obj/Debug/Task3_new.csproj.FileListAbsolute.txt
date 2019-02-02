@@ -1,0 +1,7 @@
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\bin\Debug\Task3_new.exe.config
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\bin\Debug\Task3_new.exe
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\bin\Debug\Task3_new.pdb
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\obj\Debug\Task3_new.csprojAssemblyReference.cache
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\obj\Debug\Task3_new.csproj.CoreCompileInputs.cache
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\obj\Debug\Task3_new.exe
+C:\Users\DzSee\Documents\pp2\w1\T1\Task3_new\obj\Debug\Task3_new.pdb
