@@ -9,7 +9,7 @@ namespace Task3
 {
     class Program
     {
-        static void Print_info(FileSystemInfo fi, int nmspc)
+        static void Recur(FileSystemInfo fi, int nmspc)
         {
             string s = new string(' ', nmspc);
             s = s + fi.Name;
@@ -17,10 +17,11 @@ namespace Task3
 
             if ( fi.GetType() ==  typeof(DirectoryInfo))
             {
+                
                 var v = (fi as DirectoryInfo).GetFileSystemInfos();
                 foreach (var n in v)
                 {
-                    Print_info(n, nmspc + 3);
+                    Recur(n, nmspc + 3);
                 }
             }
 
@@ -28,7 +29,7 @@ namespace Task3
         static void Main(string[] args)
         {
             DirectoryInfo di = new DirectoryInfo(@"C:\Users\DzSee\Desktop\64");
-            Print_info(di, 1);
+            Recur(di, 1);
         }
     }
 }

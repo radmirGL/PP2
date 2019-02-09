@@ -1,7 +1,0 @@
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\bin\Debug\T4_arrays.exe.config
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\bin\Debug\T4_arrays.exe
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\bin\Debug\T4_arrays.pdb
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\obj\Debug\T4_arrays.csprojAssemblyReference.cache
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\obj\Debug\T4_arrays.csproj.CoreCompileInputs.cache
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\obj\Debug\T4_arrays.exe
-C:\Users\DzSee\Documents\pp2\w1\T1\T4_arrays\obj\Debug\T4_arrays.pdb

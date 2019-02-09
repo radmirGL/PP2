@@ -1,7 +1,0 @@
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\bin\Debug\Task3_method.exe.config
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\bin\Debug\Task3_method.exe
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\bin\Debug\Task3_method.pdb
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\obj\Debug\Task3_method.csprojAssemblyReference.cache
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\obj\Debug\Task3_method.csproj.CoreCompileInputs.cache
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\obj\Debug\Task3_method.exe
-C:\Users\DzSee\Documents\pp2\w1\T1\Task3_method\obj\Debug\Task3_method.pdb

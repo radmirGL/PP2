@@ -13,7 +13,7 @@ namespace Task2
         {
             if (a == 1)
                 return false;
-            for (int i = 2; i < Math.Sqrt(a); i++)
+            for (int i = 2; i <= Math.Sqrt(a); i++)
             {
                 if (a % i == 0)
                     return false;
@@ -32,7 +32,7 @@ namespace Task2
                 {
                     res = res + " " + temp;
                 }
-
+                
             }
             return res.Trim();
         }
@@ -55,6 +55,8 @@ namespace Task2
 
             sw.Close();
             fs_2.Close();
+
+           
 
         }
     }

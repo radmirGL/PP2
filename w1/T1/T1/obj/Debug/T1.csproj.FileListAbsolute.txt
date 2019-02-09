@@ -1,7 +1,0 @@
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\bin\Debug\T1.exe.config
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\bin\Debug\T1.exe
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\bin\Debug\T1.pdb
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\obj\Debug\T1.csprojAssemblyReference.cache
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\obj\Debug\T1.csproj.CoreCompileInputs.cache
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\obj\Debug\T1.exe
-C:\Users\DzSee\Documents\pp2\w1\T1\T1\obj\Debug\T1.pdb
