@@ -18,6 +18,7 @@ namespace Main
 
         int selected_element;
         public string current_path;
+        
 
         public int Selected_Element
         {
@@ -77,11 +78,11 @@ namespace Main
             Console.WriteLine("- out from the programm");
 
         }
-        
+
         public void Output()
         {
             Console.Clear();
-            
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n");
@@ -98,19 +99,20 @@ namespace Main
             {
 
                 if (i == Selected_Element)
+                {
                     Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                    
+                }
                 else
                     Console.BackgroundColor = ConsoleColor.Black;
 
-                
                 Console.WriteLine(i + 1 + ".  " + All[i].Name);
                 Console.ResetColor();
             }
-            
+            Console.WriteLine("\n");
             Output_past();
         }
 
-              
     }
 
     enum ManagerMode

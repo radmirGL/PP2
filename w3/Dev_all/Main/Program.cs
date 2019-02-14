@@ -11,7 +11,7 @@ namespace Main
 {
     class Program
     {
-        
+
         static void Refresh(Stack<Manager> history)
         {
             history.Pop();
@@ -22,14 +22,30 @@ namespace Main
             history.Push(new Manager { All = di_refresh.GetFileSystemInfos(), Selected_Element = 0, current_path = di_refresh.FullName });
 
         }
+        static void Refresh_rev(Stack<Manager> history)
+        {
+
+
+            int refresh = history.Peek().Selected_Element;
+            FileSystemInfo fsi_refresh = history.Peek().All[refresh];
+            DirectoryInfo di_refresh = fsi_refresh as DirectoryInfo;
+            history.Push(new Manager { All = di_refresh.GetFileSystemInfos(), Selected_Element = 0, current_path = di_refresh.FullName });
+
+            history.Pop();
+
+        }
         static void Main(string[] args)
         {
+
+            //FileSystemInfo[] for_move = new FileSystemInfo[1];
+            //string old_path = "";
 
             DirectoryInfo start = new DirectoryInfo(@"C:\Users\DzSee\Desktop\64");
             Stack<Manager> history = new Stack<Manager>();
             ManagerMode manager_mode = ManagerMode.Directory;
 
-            history.Push(new Manager { All = start.GetFileSystemInfos(), Selected_Element = 0, current_path = start.FullName });
+            
+
 
             bool esc = true;
             while (esc)
@@ -78,6 +94,7 @@ namespace Main
                             streamReader_enter.Close();
                             fileStream_enter.Close();
                         }
+                        Console.ResetColor();
                         break;
                     case ConsoleKey.RightArrow: // same as enter
                         int last_element_enter_2 = history.Peek().Selected_Element;
@@ -105,11 +122,13 @@ namespace Main
                             streamReader_enter_2.Close();
                             fileStream_enter_2.Close();
                         }
+                        Console.ResetColor();
                         break;
                     case ConsoleKey.Backspace: // back to the last directory or out from the file
                         int last_element_backspace = history.Peek().Selected_Element;
                         if (manager_mode == ManagerMode.Directory)
                         {
+                            
                             history.Pop();
                         }
                         else
@@ -122,6 +141,7 @@ namespace Main
                         int last_element_backspace_2 = history.Peek().Selected_Element;
                         if (manager_mode == ManagerMode.Directory)
                         {
+                           
                             history.Pop();
                         }
                         else
@@ -147,7 +167,7 @@ namespace Main
                             {
                                 // vot eta hernya ne rabotaet
                                 //Directory.Move(directory_R.FullName, directory_R.FullName.Replace(directory_R.Name, new_name_directory));
-                                
+
                                 // a eta rabotaet
                                 directory_R.MoveTo(Path.Combine(directory_R.Parent.FullName, new_name_directory));
                             }
@@ -156,8 +176,9 @@ namespace Main
                                 MessageBox.Show("SUCH NAME ALREADY EXISTS!" + "\n" + "PLEASE REPEAT PROCEDURE", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
-                            // refresh visualy 
+                            // refresh visualy
                             Refresh(history);
+
 
                         }
                         else
@@ -166,6 +187,7 @@ namespace Main
 
                             Console.WriteLine("Enter new name for file:");
                             string new_name_file = Console.ReadLine();
+                            new_name_file = new_name_file + ".txt";
 
                             try
                             {
@@ -210,46 +232,49 @@ namespace Main
                         }
                             break;
 
-                    // кейс на перенос еще в процессе.
-                    /* case ConsoleKey.M:
-                       MessageBox.Show("Go to the new directory then press G", "OK", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                       int last_element_q = history.Peek().Selected_Element;
-                       FileSystemInfo fsi_q = history.Peek().All[last_element_q];
-                       if(fsi_q.GetType() == typeof(FileInfo))
-                       {
-                           string old_path = fsi_q.FullName;
-                           ConsoleKeyInfo key_new_path = Console.ReadKey();
+                    
+                    /* case ConsoleKey.M:                      
+                       int last_element_m = history.Peek().Selected_Element;
+                        FileSystemInfo fsi_m = history.Peek().All[last_element_m];
+                        FileInfo fi_m = fsi_m as FileInfo;
+                        for_move[0] = fi_m;
+                        if (fsi_m.GetType() == typeof(FileInfo))
+                        {
+                            old_path = fsi_m.FullName;
+                        }
+                        else
+                        {
+                            DirectoryInfo d_m = fsi_m as DirectoryInfo;
+                            old_path = d_m.FullName;
+                        }
+                        MessageBox.Show("Go to the new directory then press G", "OK", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
 
-                           if (key_new_path.Key == ConsoleKey.G)
-                           {
-                               int last_element_q_2 = history.Peek().Selected_Element;
-                               FileSystemInfo fsi_q_2 = history.Peek().All[last_element_q_2];
-                               string new_path = fsi_q_2.FullName;
-                               if (fsi_q_2.GetType() == typeof(DirectoryInfo))
-                               {
+                    case ConsoleKey.G:
 
-                                   File.Move(old_path, new_path);
-                               }
-                               else
-                               {
-                                   MessageBox.Show("THAT IS NOT A DIRECTORY!" + "\n" + "PLEASE REPEAT PROCEDURE");
-                               }
-                           }
-                       }
-                       break;
-                       */
 
+                        string new_path = history.Peek().current_path;
+                        FileSystemInfo fi_g = for_move[0];
+
+                        
+                         //if (!Directory.Exists(new_path))
+                            //Directory.CreateDirectory(new_path);
+
+                        File.Copy(fi_g.FullName, new_path, true);
+                        Refresh(history);
+                        
+                        break;
 
                     case ConsoleKey.Escape:
                         esc = false;
                         break;
-
+                        */
                         
                         // Создание файлов
                         // инфа о файле
                         
                         
-                        // вопрос об удалении
+
                         
 
                 }
