@@ -10,7 +10,7 @@ namespace Main
     public class Manager
     {
 
-        public FileSystemInfo[] Vse_cho_est
+        public FileSystemInfo[] All
         {
             get;
             set;
@@ -27,13 +27,13 @@ namespace Main
             }
             set
             {
-                if (value >= Vse_cho_est.Length)
+                if (value >= All.Length)
                 {
                     selected_element = 0;
                 }
                 else if (value < 0)
                 {
-                    selected_element = Vse_cho_est.Length - 1;
+                    selected_element = All.Length - 1;
                 }
                 else selected_element = value;
             }
@@ -71,8 +71,13 @@ namespace Main
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("- delete directory or file");
 
-        }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("ESC");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("- out from the programm");
 
+        }
+        
         public void Output()
         {
             Console.Clear();
@@ -81,7 +86,7 @@ namespace Main
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n");
             //Console.Clear();
-            Console.WriteLine("_____________[ FILE MANAGER ]_____________");
+            Console.WriteLine("_________________[ FILE MANAGER ]_________________");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Current path:  ");
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -89,7 +94,7 @@ namespace Main
             Console.WriteLine();
             Console.ResetColor();
 
-            for (int i = 0; i < Vse_cho_est.Length; i++)
+            for (int i = 0; i < All.Length; i++)
             {
 
                 if (i == Selected_Element)
@@ -98,10 +103,10 @@ namespace Main
                     Console.BackgroundColor = ConsoleColor.Black;
 
                 
-                Console.WriteLine(i + 1 + ".  " + Vse_cho_est[i].Name);
+                Console.WriteLine(i + 1 + ".  " + All[i].Name);
                 Console.ResetColor();
             }
-            Console.WriteLine("\n");
+            
             Output_past();
         }
 
