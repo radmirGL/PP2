@@ -31,12 +31,11 @@ namespace T1
             // created integers
             int n, cnt = 0;
             // Convert.ToInt32(Console.ReadLine()) - fast convert string from console to integer
-            n = Convert.ToInt32(Console.ReadLine());
+            n = int.Parse(Console.ReadLine());
             // created arrays 
             // array int size of n
             int[] ar = new int[n];
-            // array of int size 5050
-            int[] ans = new int[5050];
+            
             // array of strings size 100
             string[] ss = new string[100];
 

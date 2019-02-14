@@ -15,20 +15,20 @@ namespace Task3
             s = s + fi.Name;
             Console.WriteLine(s);
 
-            if ( fi.GetType() ==  typeof(DirectoryInfo))
+            if (fi.GetType() == typeof(DirectoryInfo))
             {
-                
-                var v = (fi as DirectoryInfo).GetFileSystemInfos();
-                foreach (var n in v)
+                var x = (fi as DirectoryInfo).GetFileSystemInfos();
+
+                foreach( var i in x)
                 {
-                    Recur(n, nmspc + 3);
+                    Recur(i, nmspc + 4);
                 }
             }
-
         }
         static void Main(string[] args)
         {
             DirectoryInfo di = new DirectoryInfo(@"C:\Users\DzSee\Desktop\64");
+
             Recur(di, 1);
         }
     }

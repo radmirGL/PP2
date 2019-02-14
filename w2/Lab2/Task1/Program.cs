@@ -30,6 +30,8 @@ namespace Task1
             StreamReader sr = new StreamReader(fs);
 
             string s = sr.ReadLine();
+            fs.Close();
+            sr.Close();
             
             if (Check(s))
                 Console.WriteLine("Yes");

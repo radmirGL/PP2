@@ -30,11 +30,12 @@ namespace Task2
                 int temp = int.Parse(q);
                 if (Check(temp))
                 {
-                    res = res + " " + temp;
+                    res += temp;
+                    res += " ";
                 }
                 
             }
-            return res.Trim();
+            return res.Trim(); // delete probelov
         }
         static void Main(string[] args)
         {
