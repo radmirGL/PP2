@@ -44,7 +44,7 @@ namespace Main
             Stack<Manager> history = new Stack<Manager>();
             ManagerMode manager_mode = ManagerMode.Directory;
 
-            
+            history.Push(new Manager { All = start.GetFileSystemInfos(), Selected_Element = 0, current_path = start.FullName });
 
 
             bool esc = true;
