@@ -18,7 +18,7 @@ namespace Main
 
         int selected_element;
         public string current_path;
-        
+
 
         public int Selected_Element
         {
@@ -101,7 +101,7 @@ namespace Main
                 if (i == Selected_Element)
                 {
                     Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                    
+
                 }
                 else
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -114,6 +114,7 @@ namespace Main
         }
 
     }
+   
 
     enum ManagerMode
     {
