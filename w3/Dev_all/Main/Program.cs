@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Drawing;
 
 namespace Main
 {
@@ -44,13 +45,35 @@ namespace Main
                 if (manager_mode == ManagerMode.Directory)
                 {                   
                     history.Peek().Output();
-                    Console.WriteLine("\n");                    
+                    Console.WriteLine("\n");
+                    int for_legnth = history.Peek().Selected_Element;
+
+                    // пофиксить вывод размера, если папка пуста1
+                    FileSystemInfo fsi_lenght = history.Peek().All[for_legnth];
+
+                    if (fsi_lenght.GetType() == typeof(FileInfo))
+                    {
+                        FileInfo fi_lenght = fsi_lenght as FileInfo;
+                        long lenght = fi_lenght.Length;
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        
+                        Console.WriteLine("File lenght:  " + lenght + "  bytes");
+                    }
+                    else
+                    {
+                        DirectoryInfo dir_lenght = fsi_lenght as DirectoryInfo;
+                        var files = Directory.EnumerateFiles(dir_lenght.FullName, "*", SearchOption.AllDirectories);
+                        long lenght = (from file in files let FileInfo = new FileInfo(file) select FileInfo.Length).Sum();
+                        Console.ForegroundColor = ConsoleColor.Green;
+
+                        Console.WriteLine("File lenght:  " + lenght + "  bytes");
+                    }
                 }
                 ConsoleKeyInfo key = Console.ReadKey();
 
                 switch (key.Key)
                 {
-                    case ConsoleKey.DownArrow:                        
+                    case ConsoleKey.DownArrow:
                         history.Peek().Selected_Element++;
                         break;
 
@@ -65,20 +88,35 @@ namespace Main
                         if (fsi_enter.GetType() == typeof(DirectoryInfo))
                         {
                             DirectoryInfo directory_enter = fsi_enter as DirectoryInfo;
-                            history.Push( new Manager{ All = directory_enter.GetFileSystemInfos(), Selected_Element = 0, current_path = directory_enter.FullName });
+                            history.Push(new Manager { All = directory_enter.GetFileSystemInfos(), Selected_Element = 0, current_path = directory_enter.FullName });
                         }
-                        else
+                        else if (fsi_enter.GetType() == typeof(FileInfo))
                         {
                             manager_mode = ManagerMode.File;
-                            FileStream fileStream_enter = new FileStream(fsi_enter.FullName, FileMode.Open, FileAccess.Read);
-                            StreamReader streamReader_enter = new StreamReader(fileStream_enter);
-                            Console.BackgroundColor = ConsoleColor.White;
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            Console.Clear();
-                            Console.WriteLine(streamReader_enter.ReadToEnd());
+                            FileInfo fi_enter = fsi_enter as FileInfo;
+                            string check_ext = Path.GetExtension(fi_enter.FullName);
+                            if (check_ext == ".exe")
+                            {
+                                System.Diagnostics.Process.Start(fi_enter.FullName);
+                            }
+                            else if (check_ext == ".jpg" || check_ext == ".bmp" || check_ext == ".gif" || check_ext == ".gif") 
+                            {
+                                Form1 try_it = new Form1(fi_enter);
+                                Application.Run(try_it);
+                            }
+                            else
+                            {
+                                
+                                FileStream fileStream_enter = new FileStream(fsi_enter.FullName, FileMode.Open, FileAccess.Read);
+                                StreamReader streamReader_enter = new StreamReader(fileStream_enter);
+                                Console.BackgroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.Clear();
+                                Console.WriteLine(streamReader_enter.ReadToEnd());
 
-                            streamReader_enter.Close();
-                            fileStream_enter.Close();
+                                streamReader_enter.Close();
+                                fileStream_enter.Close();
+                            }
                         }
                         Console.ResetColor();
                         break;
@@ -90,22 +128,31 @@ namespace Main
                         if (fsi_enter_2.GetType() == typeof(DirectoryInfo))
                         {
                             DirectoryInfo directory_enter_2 = fsi_enter_2 as DirectoryInfo;
-                            history.Push( new Manager{ All = directory_enter_2.GetFileSystemInfos(), Selected_Element = 0, current_path = directory_enter_2.FullName });
+                            history.Push(new Manager { All = directory_enter_2.GetFileSystemInfos(), Selected_Element = 0, current_path = directory_enter_2.FullName });
                         }
-                        else
+                        else if (fsi_enter_2.GetType() == typeof(FileInfo))
                         {
-                            manager_mode = ManagerMode.File;
-                            FileStream fileStream_enter_2 = new FileStream(fsi_enter_2.FullName, FileMode.Open, FileAccess.Read);
-                            StreamReader streamReader_enter_2 = new StreamReader(fileStream_enter_2);
+                            FileInfo fi_enter = fsi_enter_2 as FileInfo;
+                            string ext = Path.GetExtension(fi_enter.FullName);
+                            if (ext == ".exe")
+                            {
+                                System.Diagnostics.Process.Start(fi_enter.FullName);
+                            }
+                            else
+                            {
+                                manager_mode = ManagerMode.File;
+                                FileStream fileStream_enter_2 = new FileStream(fsi_enter_2.FullName, FileMode.Open, FileAccess.Read);
+                                StreamReader streamReader_enter_2 = new StreamReader(fileStream_enter_2);
 
-                            Console.BackgroundColor = ConsoleColor.White;
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            Console.Clear();
+                                Console.BackgroundColor = ConsoleColor.White;
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.Clear();
 
-                            Console.WriteLine(streamReader_enter_2.ReadToEnd());
+                                Console.WriteLine(streamReader_enter_2.ReadToEnd());
 
-                            streamReader_enter_2.Close();
-                            fileStream_enter_2.Close();
+                                streamReader_enter_2.Close();
+                                fileStream_enter_2.Close();
+                            }
                         }
                         Console.ResetColor();
                         break;
@@ -148,27 +195,48 @@ namespace Main
                             manager_mode = ManagerMode.Directory;
                         }
 
-                            
+
                         break;
 
                     case ConsoleKey.LeftArrow: // same as backspace
                         int last_element_left = history.Peek().Selected_Element;
                         FileSystemInfo fsi_left = history.Peek().All[last_element_left];
-                        DirectoryInfo di_left = fsi_left as DirectoryInfo;
-                        string current_left = di_left.FullName;
-                        if (check_and_ask != current_left)
+
+                        if (manager_mode == ManagerMode.Directory)
                         {
-                            if (manager_mode == ManagerMode.Directory)
+                            if (fsi_left.GetType() == typeof(FileInfo))
                             {
-                                history.Pop();
+                                FileInfo di_left = fsi_left as FileInfo;
+                                string check = di_left.Directory.FullName;
+
+                                if (check_and_ask != check)
+                                {
+                                    history.Pop();
+                                }
+                                else
+                                    MessageBox.Show("YOU CAN'T LEAVE FROM THE ROOT DIRECTORY!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                             }
-                            else
+                            else if (fsi_left.GetType() == typeof(DirectoryInfo))
                             {
-                                manager_mode = ManagerMode.Directory;
+                                DirectoryInfo di_left = fsi_left as DirectoryInfo;
+                                string check = di_left.Parent.FullName;
+
+                                if (check_and_ask != check)
+                                {
+                                    history.Pop();
+                                }
+                                else
+                                    MessageBox.Show("YOU CAN'T LEAVE FROM THE ROOT DIRECTORY!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                             }
                         }
                         else
-                            MessageBox.Show("YOU CAN'T LEAVE FROM THE ROOT DIRECTORY!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        {
+                            manager_mode = ManagerMode.Directory;
+                        }
+
+
                         break;
 
                     case ConsoleKey.R: // rename file or directory
@@ -228,7 +296,7 @@ namespace Main
                         DialogResult ans = MessageBox.Show("Are you sure?", "Yes Or NO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (ans == DialogResult.Yes)
-                        {                            
+                        {
                             if (fsi_delete.GetType() == typeof(DirectoryInfo))
                             {
                                 DirectoryInfo di_delete = fsi_delete as DirectoryInfo;
@@ -246,7 +314,7 @@ namespace Main
 
                                 // Refresh picture
                                 Refresh(history, fsi_delete);
-                               
+
                                 history.Peek().Selected_Element--;
                             }
                         }
@@ -259,13 +327,17 @@ namespace Main
                     case ConsoleKey.Escape:
                         esc = false;
                         break;
-                        
-                        
-                        
-                        
-                        
 
+                    case ConsoleKey.Y:
                         
+                        break;
+
+
+
+
+
+
+
 
                 }
             }
