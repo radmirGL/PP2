@@ -92,24 +92,33 @@ namespace Main
             Console.Write("Current path:  ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(current_path + "\n");
-            Console.WriteLine();
+
             Console.ResetColor();
+
+            Console.WriteLine("\n");
 
             for (int i = 0; i < All.Length; i++)
             {
-
+                if (All[i].GetType() == typeof(DirectoryInfo))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else if ( All[i].GetType() == typeof(FileInfo))
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
                 if (i == Selected_Element)
                 {
                     Console.BackgroundColor = ConsoleColor.DarkMagenta;
-
                 }
                 else
                     Console.BackgroundColor = ConsoleColor.Black;
 
                 Console.WriteLine(i + 1 + ".  " + All[i].Name);
                 Console.ResetColor();
+
             }
-            Console.WriteLine("\n");
+            Console.WriteLine();
             Output_past();
         }
 
